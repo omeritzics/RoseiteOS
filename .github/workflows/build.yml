@@ -1,0 +1,29 @@
+name: Build My Secure ISO
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # מאפשר לך להריץ את הבנייה ידנית
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Image using Vib
+        uses: vanilla-os/vib-action@v1
+        with:
+          recipe: 'recipe.yml'
+
+      # שלב זה הופך את ה-Image לקובץ ISO
+      - name: Generate ISO
+        uses: vanilla-os/iso-constructor-action@v1
+        with:
+          image: 'torah-os:latest' # השם שהגדרנו ב-recipe
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Secure-Torah-OS-ISO
+          path: ./*.iso
