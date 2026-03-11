@@ -4,58 +4,32 @@ on:
   push:
     branches: [ main ]
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: read
   packages: write
 
 jobs:
-  build-image:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check if recipe exists
-        run: ls -l recipe.yml
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+      - name: Build Image
+        # שים לב לאותיות הגדולות - זה מה שגרם לשגיאה הקודמת
+        uses: Vanilla-OS/vib-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and Push OCI Image
-        run: |
-          # שינוי התגית מ-latest ל-main
-          docker run --privileged --rm \
-            -v .:/recipe \
-            -v /home/runner/.docker/config.json:/root/.docker/config.json \
-            -w /recipe \
-            ghcr.io/vanilla-os/vib:main \
-            build recipe.yml \
-            --tag ghcr.io/${{ github.repository_owner }}/torah-os:latest \
-            --push
-
-  build-iso:
-    needs: build-image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+          recipe: 'recipe.yml'
+          # כאן אנחנו בונים את האימג' ושומרים אותו מקומית
+          tag: 'torah-os:latest'
 
       - name: Generate ISO
-        run: |
-          # שינוי התגית ל-main גם כאן
-          docker run --privileged --rm \
-            -v .:/output \
-            ghcr.io/vanilla-os/os-constructor:main \
-            ghcr.io/${{ github.repository_owner }}/torah-os:latest
+        uses: Vanilla-OS/os-constructor-action@v1
+        with:
+          # ה-Action הזה לוקח את האימג' שבנינו למעלה והופך אותו ל-ISO
+          image: 'torah-os:latest'
 
-      - name: Upload ISO Artifact
+      - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
           name: Torah-OS-ISO
