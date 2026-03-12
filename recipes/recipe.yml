@@ -5,9 +5,11 @@ base-image: ghcr.io/ublue-os/kinoite-main
 image-version: 43
 
 modules:
+  - type: script
+    scripts:
+      - add-repos.sh
   - type: rpm-ostree
     install:
-      - fsearch
       - onlyoffice-desktopeditors
       - sayonara
     remove:
