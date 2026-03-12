@@ -29,7 +29,6 @@ modules:
       - plasma-nm 
       # הסרות חדשות לפי השמות המדויקים בפדורה:
       - plasma-discover
-      - ksystemlog
       - kde-connect
       - krfb
       - kate
