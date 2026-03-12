@@ -40,7 +40,6 @@ modules:
       - plasma-welcome
       - kdebugsettings
       - fcitx5 # מנוע קלט לשפות אסייתיות, אפשר להסיר.
-      - fcitx5-autostart
 
   # התקנת Obsidian כ-Flatpak בצורה מובנית
   - type: default-flatpaks
