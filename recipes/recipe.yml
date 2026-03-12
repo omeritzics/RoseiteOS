@@ -7,9 +7,10 @@ image-version: 43
 modules:
   # שינוי השם והגרסה המוצגים במערכת
   - type: os-release
-    name: RoseiteOS
-    pretty-name: RoseiteOS
-    version: 0.1
+    properties:
+      name: RoseiteOS
+      pretty-name: RoseiteOS
+      version: 0.1
 
   - type: script
     scripts:
