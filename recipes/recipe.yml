@@ -83,8 +83,9 @@ modules:
 
   # התקנת Obsidian כ-Flatpak בצורה מובנית
   - type: default-flatpaks
-    notify: false
     system:
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
       install:
         - md.obsidian.Obsidian
 
