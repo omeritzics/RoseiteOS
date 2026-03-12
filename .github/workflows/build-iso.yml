@@ -1,0 +1,47 @@
+name: Build Offline ISO
+on:
+  workflow_dispatch: # הפעלה ידנית בלחיצת כפתור
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # שלב קריטי ל-ISO אופליין: פינוי מקום בשרת של גיטהאב
+      - name: Free up disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Build Offline Installer ISO
+        uses: jasonn3/build-container-installer@v1.2.2
+        id: build
+        with:
+          arch: x86_64
+          image_name: ashi-secure-os
+          image_repo: ghcr.io/${{ github.repository_owner }}
+          image_tag: 43
+          version: 43
+          variant: Kinoite
+          iso_name: ashi-secure-os-offline.iso
+          iso_type: offline # הפקודה שיוצרת את ההתקנה הסגורה
+
+      - name: Upload ISO as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ashi-secure-os-offline-iso
+          path: ${{ steps.build.outputs.iso_path }}
+          if-no-files-found: error
+          retention-days: 7
