@@ -14,7 +14,9 @@ modules:
       - sayonara
     remove:
       - firefox
+      - firefox-langpacks
       - sudo
+      - sudo-python-plugin
       - konsole
       - kinfocenter
       - kernel-modules-extra
