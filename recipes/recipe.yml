@@ -86,6 +86,8 @@ modules:
       - plasma-workspace-wallpapers
       - f43-backgrounds-kde
       - f43-backgrounds-base
+      - desktop-backgrounds-compat
+      - desktop-backgrounds-kde
 
 
   - type: script
