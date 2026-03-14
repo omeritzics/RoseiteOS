@@ -2,7 +2,7 @@
 name: roseite
 description: RoseiteOS - A completely hermetic, terminal-free, secure study system.
 base-image: ghcr.io/ublue-os/onyx-main
-image-version: 43
+image-version: latest
 
 modules:
   # שינוי השם והגרסה המוצגים במערכת
