@@ -34,7 +34,7 @@ jobs:
           image_repo: ghcr.io/ashivered
           image_tag: 43
           version: 43
-          variant: Onyx
+          variant: Silverblue
           iso_name: roseite-offline.iso
           iso_type: offline # הפקודה שיוצרת את ההתקנה הסגורה
 
