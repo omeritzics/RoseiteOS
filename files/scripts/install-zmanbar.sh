@@ -5,7 +5,7 @@ EXT1="ZmanBar@dev-in-the-bm.github.io"
 EXT2="dash-to-dock@micxgx.gmail.com"
 
 # התקנת ZmanBar
-cp files/ZmanBar.zip /tmp/ZmanBar.zip
+cp /tmp/files/ZmanBar.zip /tmp/ZmanBar.zip
 mkdir -p /usr/share/gnome-shell/extensions/${EXT1}
 unzip -o /tmp/ZmanBar.zip -d /usr/share/gnome-shell/extensions/${EXT1}
 chmod -R 755 /usr/share/gnome-shell/extensions/${EXT1}
