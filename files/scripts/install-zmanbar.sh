@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
-cp files/ZmanBar.zip /tmp/ZmanBar.zip
 set -euo pipefail
 
-EXT_ID="ZmanBar@dev-in-the-bm.github.io"
-EXT_DIR="/usr/share/gnome-shell/extensions/${EXT_ID}"
+EXT1="ZmanBar@dev-in-the-bm.github.io"
+EXT2="dash-to-dock@micxgx.gmail.com"
 
-mkdir -p "${EXT_DIR}"
+# התקנת ZmanBar
+cp files/ZmanBar.zip /tmp/ZmanBar.zip
+mkdir -p /usr/share/gnome-shell/extensions/${EXT1}
+unzip -o /tmp/ZmanBar.zip -d /usr/share/gnome-shell/extensions/${EXT1}
+chmod -R 755 /usr/share/gnome-shell/extensions/${EXT1}
 
-# העתקה מהקובץ המקומי (במקום הורדה)
-unzip /tmp/ZmanBar.zip -d "${EXT_DIR}"
-
-chmod -R 755 "${EXT_DIR}"
-
-# הפעלה אוטומטית דרך dconf
+# dconf system defaults
 mkdir -p /etc/dconf/db/local.d
 
-cat <<EOF > /etc/dconf/db/local.d/00-extensions
+cat <<EOF > /etc/dconf/db/local.d/00-gnome
 [org/gnome/shell]
-enabled-extensions=['${EXT_ID}']
+enabled-extensions=['${EXT1}','${EXT2}']
+disable-user-extensions=false
+
+[org/gnome/shell/extensions/dash-to-dock]
+dock-fixed=true
+autohide=false
+intellihide=false
 EOF
 
-dconf update
+# קומפילציה של dconf
+dconf update || true

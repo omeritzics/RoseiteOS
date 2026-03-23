@@ -1,6 +1,6 @@
 # RosieteOS
 
-RoseiteOS is a Linux distribution, based on Fedora Kinoite 43.
+RoseiteOS is a Linux distribution, based on Fedora SliverBlue.
 
 RoseiteOS is only for Torah study:
 
@@ -9,6 +9,7 @@ Preinstalled:
 - Zayit books
 - OnlyOffice
 - Dopamine Music player
+- Gnome text editor
 
 "Kosher" features:
 
@@ -18,13 +19,21 @@ Preinstalled:
 
 Easy & lightweight:
 
-- KDE DE for modern and Windows-style UI
+- Gnome DE for modern UI.
 - OnlyOffice for MS Office style UI
 - Removed many packages to keep system lightweight
+- immutable OS, so also root can't modify system files
+
+
+## Todo list:
+
+- Pin OnlyOffice, Zayit, Dopamine, Files, to Dock
+- Translate Dopamine to hebrew
+- Search for Gnome theme that looked as Windows (for non-techincal users)
 
 ## Customizing
 
-As fedora Kinoite, you can modify main file (recipes/recipe.yml). read Fedora Kinoite docs & template for more info:
+As fedora SilverBlue, you can modify main file (recipes/recipe.yml). read Fedora Kinoite docs & template for more info:
 
 https://github.com/blue-build/template
 
