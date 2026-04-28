@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: roseite
 description: RoseiteOS - A completely hermetic, terminal-free, secure study system.
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/budgie-atomic-main
 image-version: latest
 
 modules:
