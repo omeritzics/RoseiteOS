@@ -21,7 +21,7 @@ Preinstalled:
 
 Easy & lightweight:
 
-- Gnome DE for modern UI
+- Budgie desktop environment for modern UI
 - OnlyOffice for MS Office style UI
 - Removed many packages to keep system lightweight
 - Immutable OS, so even not root would be able to modify system files.
