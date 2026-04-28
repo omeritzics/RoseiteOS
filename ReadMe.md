@@ -21,10 +21,10 @@ Preinstalled:
 
 Easy & lightweight:
 
-- Gnome DE for modern UI.
+- Gnome DE for modern UI
 - OnlyOffice for MS Office style UI
 - Removed many packages to keep system lightweight
-- immutable OS, so also root can't modify system files
+- Immutable OS, so even not root would be able to modify system files.
 
 
 ## Todo list:
@@ -35,7 +35,7 @@ Easy & lightweight:
 
 ## Customizing
 
-As fedora SilverBlue, you can modify main file (recipes/recipe.yml). read Fedora Kinoite docs & template for more info:
+As fedora SilverBlue, you can modify main file (recipes/recipe.yml). Read Fedora Kinoite docs & template for more info:
 
 https://github.com/blue-build/template
 
